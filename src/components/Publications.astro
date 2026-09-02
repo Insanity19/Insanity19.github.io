@@ -68,6 +68,7 @@ const publications: Publication[] = [
     tags: ['LLM', 'Data Visualization'],
     links: [
       { label: 'Paper', url: 'https://dl.acm.org/doi/pdf/10.1145/3746059.3747644' },
+      { label: 'Code', url: 'https://github.com/ZJUIDG-AIVA/ReSpark' },
     ],
   },
 ];
@@ -101,8 +102,11 @@ const publications: Publication[] = [
             </p>
             {p.links && p.links.length > 0 && (
               <div class="pub-links">
-                {p.links.map(l => (
-                  <a href={l.url} class="pub-link-btn" target="_blank" rel="noopener">{l.label}</a>
+                {p.links.map((l, k) => (
+                  <>
+                    {k > 0 && <span class="pub-link-sep">/</span>}
+                    <a href={l.url} class="pub-link-btn" target="_blank" rel="noopener">{l.label}</a>
+                  </>
                 ))}
               </div>
             )}
@@ -186,8 +190,15 @@ const publications: Publication[] = [
 
   .pub-links {
     display: flex;
-    gap: 1rem;
+    gap: 0.4rem;
     flex-wrap: wrap;
+    align-items: baseline;
+  }
+
+  .pub-link-sep {
+    font-family: var(--f-label);
+    font-size: 0.8rem;
+    color: var(--forest);
   }
 
   .pub-link-btn {

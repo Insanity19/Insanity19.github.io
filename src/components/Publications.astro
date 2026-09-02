@@ -20,6 +20,25 @@ const publications: Publication[] = [
 
   {
     year: '2026',
+    title: 'Monitoring Web Agents Without Internal Signals: Observable Trajectories and Key-Step Supervision',
+    authors: ['Sitong Pan', 'Yipeng Shen', 'Yilin Lu', 'Caiwen Ding', 'Lu Cheng', 'Qianwen Wang'],
+    venue: 'Preprint',
+    image: '/pub/agent-monitoring.png',
+    tags: ['Web Agents', 'Uncertainty', 'LLM'],
+  },
+  {
+    year: '2026',
+    title: 'Not All Uncertainty Is Equal: How Uncertainty Granularity Shapes Human Verification in LLM-Assisted Decision Making',
+    authors: ['Mauricio Villavicencio', 'Sitong Pan', 'Qianwen Wang'],
+    venue: 'ACM FAccT 2026',
+    image: '/pub/facct26.png',
+    tags: ['Human-AI Collaboration', 'Uncertainty', 'LLM'],
+    links: [
+      { label: 'Paper', url: 'https://arxiv.org/abs/2605.28571' },
+    ],
+  },
+  {
+    year: '2026',
     title: 'TrajectoryCurer: Visual Analysis of Trajectory Data Quality',
     authors: ['Xiaodan Miao', 'Sitong Pan', 'Shifu Chen', 'Di Weng', 'Yingcai Wu'],
     venue: 'IEEE PacificVis 2026',
@@ -56,14 +75,13 @@ const publications: Publication[] = [
 
 <section id="publications">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="label">02</span>
+    <div class="section-header">
       <h2>Publications</h2>
     </div>
 
     <ul class="pub-list">
       {publications.map((p, i) => (
-        <li class={`pub-item reveal reveal-delay-${Math.min(i + 1, 4)}`}>
+        <li class="pub-item">
           <div class="pub-thumb">
             {p.image
               ? <img src={p.image} alt={p.title} />
@@ -71,7 +89,7 @@ const publications: Publication[] = [
             }
           </div>
           <div class="pub-body">
-            <span class="label pub-year">{p.year} · {p.venue}</span>
+            <span class="label pub-year">{p.year} {p.venue}</span>
             <p class="pub-title">{p.title}</p>
             <p class="pub-authors">
               {p.authors.map((a, j) => (
@@ -96,7 +114,9 @@ const publications: Publication[] = [
 </section>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+  /* 紧接在 Hero 的 News 之后，顶部留白比其他 section 收窄 */
+  #publications { padding-block-start: clamp(1.25rem, 2vw, 1.75rem); }
+
   .pub-list {
     display: flex;
     flex-direction: column;
@@ -104,18 +124,15 @@ const publications: Publication[] = [
 
   .pub-item {
     display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 2.5rem;
-    padding-block: 2rem;
-    border-bottom: 1px solid var(--border);
+    grid-template-columns: 240px 1fr;
+    gap: 1.5rem;
+    padding-block: 0.85rem;
     align-items: start;
   }
 
-  .pub-item:first-child { border-top: 1px solid var(--border); }
-
   .pub-thumb {
-    width: 180px;
-    height: 120px;
+    width: 240px;
+    height: 160px;
     flex-shrink: 0;
   }
 
@@ -123,7 +140,6 @@ const publications: Publication[] = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border: 1px solid var(--border);
     border-radius: 2px;
   }
 
@@ -131,31 +147,36 @@ const publications: Publication[] = [
     width: 100%;
     height: 100%;
     background: var(--surface);
-    border: 1px solid var(--border);
     border-radius: 2px;
   }
 
   .pub-year {
-    color: var(--muted);
-    display: block;
-    margin-bottom: 0.5rem;
+    color: var(--forest);
+    font-weight: 600;
+    display: inline-block;
+    background: var(--forest-bg);
+    border: 1px solid var(--forest);
+    border-radius: 999px;
+    /* 右内边距略小，抵消 letter-spacing 在末字符后多出的空隙 */
+    padding: 0.16rem 0.5rem 0.16rem 0.65rem;
+    margin-bottom: 0.4rem;
   }
 
   .pub-title {
-    font-family: 'Crimson Text', Georgia, serif;
-    font-size: 1.05rem;
-    font-weight: 400;
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-    color: var(--fg);
+    font-family: var(--f-display);
+    font-size: 1.12rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.15rem;
+    color: var(--gold);
   }
 
   .pub-authors {
-    font-family: 'Crimson Text', Georgia, serif;
+    font-family: var(--f-display);
     font-size: 1.05rem;
     color: var(--muted);
-    line-height: 1.65;
-    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    margin-bottom: 0.7rem;
   }
 
   .pub-me {
@@ -165,23 +186,19 @@ const publications: Publication[] = [
 
   .pub-links {
     display: flex;
-    gap: 0.5rem;
+    gap: 1rem;
     flex-wrap: wrap;
   }
 
   .pub-link-btn {
-    font-family: var(--f-mono);
-    font-size: 0.65rem;
+    font-family: var(--f-label);
+    font-size: 0.8rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--muted);
-    border: 1px solid var(--border);
-    padding: 0.2rem 0.6rem;
-    transition: border-color 0.2s, color 0.2s;
+    color: var(--forest);
   }
 
   .pub-link-btn:hover {
-    border-color: var(--fg);
     color: var(--fg);
   }
 
@@ -191,6 +208,6 @@ const publications: Publication[] = [
       gap: 1rem;
     }
 
-    .pub-thumb { width: 100%; height: 140px; }
+    .pub-thumb { width: 100%; height: 180px; }
   }
 </style>

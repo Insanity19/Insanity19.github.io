@@ -15,7 +15,7 @@ const items: Item[] = [
   },
   {
     category: 'Side Project',
-    content: ['Multimodal Model Steering', 'Fine-tuning for Diffusion Language Models'],
+    content: ['AI4Science'],
   },
   {
     category: 'Hobby',
@@ -27,25 +27,20 @@ const items: Item[] = [
   },
   {
     category: 'Currently Learning',
-    content: ['JEPA series from Yann LeCun'],
+    content: [],
   },
 ];
 ---
 
 <section id="misc">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="label">05</span>
+    <div class="section-header">
       <h2>Misc</h2>
     </div>
 
-    <p class="misc-intro reveal reveal-delay-1">
-      
-    </p>
-
     <ul class="misc-grid">
       {items.map((item, i) => (
-        <li class={`misc-card reveal reveal-delay-${Math.min((i % 3) + 1, 4)}`}>
+        <li class="misc-card">
           <dt class="label misc-cat">{item.category}</dt>
           <dd class="misc-content">
             {item.content.map((line, j) => (
@@ -62,14 +57,6 @@ const items: Item[] = [
 </section>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&display=swap');
-  .misc-intro {
-    font-size: 1rem;
-    color: var(--muted);
-    margin-bottom: clamp(2rem, 4vw, 3rem);
-    max-width: 50ch;
-  }
-
   .misc-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -80,11 +67,10 @@ const items: Item[] = [
 
   .misc-card {
     background: var(--bg);
-    padding: 2rem 1.75rem;
+    padding: 0.9rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    transition: background 0.25s ease;
+    gap: 0.35rem;
   }
 
   .misc-card:hover { background: var(--surface); }
@@ -94,9 +80,9 @@ const items: Item[] = [
   }
 
   .misc-content {
-    font-family: 'Crimson Text', Georgia, serif;
+    font-family: var(--f-display);
     font-size: 1.05rem;
-    line-height: 1.6;
+    line-height: 1.4;
     color: var(--fg);
   }
 

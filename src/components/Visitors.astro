@@ -1,0 +1,45 @@
+---
+/**
+ * 访问量统计 —— 不蒜子（busuanzi）
+ *
+ * 纯静态站没有后端，计数只能靠第三方。
+ * 不蒜子免注册、无需配置：引入脚本后它按页面 URL 自动计数。
+ * 脚本加载完成前，下面的容器由它自己保持隐藏，所以不会闪出空数字。
+ */
+---
+
+<section id="visitors">
+  <div class="container">
+    <div class="visitor-line">
+      <span id="busuanzi_container_site_pv" class="label visitor-stat">
+        Total visits <span id="busuanzi_value_site_pv" class="visitor-num"></span>
+      </span>
+      <span id="busuanzi_container_site_uv" class="label visitor-stat">
+        Unique visitors <span id="busuanzi_value_site_uv" class="visitor-num"></span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<style>
+  #visitors {
+    padding-block: 0 0.5rem;
+  }
+
+  .visitor-line {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .visitor-stat {
+    color: var(--fg);
+  }
+
+  .visitor-num {
+    color: var(--forest);
+    font-weight: 600;
+  }
+</style>
